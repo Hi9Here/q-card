@@ -1,0 +1,38 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../polymer/polymer.html">
+<!--
+  `<q-card></q-card>` d
+  @demo demo.html
+-->
+<dom-module id="q-card">
+  <template>
+    
+  </template>
+</dom-module>
+<script>
+  Polymer({
+    is: "q-card",
+    properties:{
+      chips:{
+        notify:true,
+        type:Array,
+      },
+      prompt:{
+        type:String,
+        notify:true,
+        computed:"getPrompt(line,card)",
+      },
+    },
+    getPrompt: function(line, card){
+      if (!card.name) {
+        this.chip = []
+        return "Name it"
+      } else if(!card.image) {
+        this.chip = ["Yes","No"]
+        return "Change Image?"
+      } 
+      // test for tricks
+      
+    },
+  })
+</script>
