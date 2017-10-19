@@ -14,10 +14,15 @@
       prompt:{
         type:String,
         notify:true,
-        computed:"getPrompt(line,card)",
+        computed:"setPrompt(line,card)",
       },
     },
-    getPrompt: function(line, card){
+    setPrompt: function(line,card) {
+      this.debounce("update",this.getPrompt,2000)
+    },
+    getPrompt: function(){
+      var line = this.line
+      var card = this.card
       if (!card.name) {
         this.chips = []
         return "Name it"
