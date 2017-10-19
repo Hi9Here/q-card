@@ -35,16 +35,16 @@
       var card = this.card
       if (!card.name) {
         this.chips = []
-        return "Name it"
+        this.prompt = "Name it"
       } else if(!card.image) {
         this.chips = ["Yes","No"]
-        return "Change Image?"
+        this.prompt =  "Change Image?"
       } else if(!line) {
         this.chips = ["Heading","List","Image"]
-        return "Add some text"
+        this.prompt =  "Add some text"
       } else {
         this.chips = ["Heading","List","Image"]
-        return ""
+        this.prompt =  ""
       }
       // test for tricks
       
