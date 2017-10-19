@@ -15,9 +15,12 @@
         type:String,
         notify:true,
       },
-      _fireChips: {
+      _setPrompt: {
         computed:"__fireChips(line,chips)",
-      }
+      },
+      _fireChips: {
+        computed:"setPrompt(line,chips)",
+      },
     },
     __fireChips: function(line,chips){
       chips.forEach(function(chip) {
