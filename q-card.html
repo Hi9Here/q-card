@@ -16,8 +16,18 @@
         notify:true,
         computed:"setPrompt(line,card)",
       },
+      _fireChips: {
+        computed:"__fireChips(line,chips)",
+      }
     },
-    setPrompt: function(line,card) {
+    __fireChips: function(line,chips){
+      chips.forEach(function(chip) {
+        if (chip.toLowerCase().trim() == line.toLowerCase().trip()) (
+          this.fire(chip,this.prompt)
+        )
+      })
+    },
+    setPrompt: function(line, card) {
       this.debounce("update",this.getPrompt,2000)
     },
     getPrompt: function(){
