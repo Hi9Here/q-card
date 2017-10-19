@@ -16,10 +16,10 @@
         notify:true,
       },
       _setPrompt: {
-        computed:"__fireChips(line,chips)",
+        computed:"setPrompt(line, card)",
       },
       _fireChips: {
-        computed:"setPrompt(line,chips)",
+        computed:"__fireChips(line, chips)",
       },
     },
     __fireChips: function(line,chips){
