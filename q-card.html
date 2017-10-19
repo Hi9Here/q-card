@@ -1,14 +1,8 @@
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../polymer/polymer.html">
 <!--
   `<q-card></q-card>` d
   @demo demo.html
 -->
-<dom-module id="q-card">
-  <template>
-    
-  </template>
-</dom-module>
 <script>
   Polymer({
     is: "q-card",
@@ -25,10 +19,10 @@
     },
     getPrompt: function(line, card){
       if (!card.name) {
-        this.chip = []
+        this.chips = []
         return "Name it"
       } else if(!card.image) {
-        this.chip = ["Yes","No"]
+        this.chips = ["Yes","No"]
         return "Change Image?"
       } 
       // test for tricks
