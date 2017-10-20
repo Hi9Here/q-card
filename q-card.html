@@ -44,6 +44,11 @@
           this.chips = []
           this.prompt = "Name it (more)"
         } else if(!card.image) {
+          if (this.editor) {
+            var cur = this.editor.getSelection().index+1
+            this.editor.insertEmbed( cur, 'image', '/deko-150.png');
+            this.editor.setSelection(cur)
+          }
           this.chips = ["Yes","No"]
           this.prompt =  "Change Image?"
         } else if(!line) {
