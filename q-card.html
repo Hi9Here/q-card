@@ -19,10 +19,10 @@
         computed:"setPrompt(line, card)",
       },
       _fireChips: {
-        computed:"__fireChips(line, chips)",
+        computed:"__fireChips(line, chips, prompt)",
       },
     },
-    __fireChips: function(line,chips){
+    __fireChips: function(line, chips, prompt){
       var that = this
       chips.forEach(function(chip) {
         if (chip.toLowerCase().trim() == line.toLowerCase().trim()) (
