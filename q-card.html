@@ -75,6 +75,8 @@
       })
     },
     setPrompt: function(line, card) {
+      this.chips = []
+      this.prompt = ""
       this.debounce("update", this.getPrompt,2000)
     },
     getPrompt: function(){
