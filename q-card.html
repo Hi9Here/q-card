@@ -25,12 +25,15 @@
     __fireChips: function(line,chips){
       chips.forEach(function(chip) {
         if (chip.toLowerCase().trim() == line.toLowerCase().trim()) (
-          this.fire(chip, this.prompt)
+          this.fire("chip", {
+            prompt: this.prompt,
+            chip: chip,
+          })
         )
       })
     },
     setPrompt: function(line, card) {
-      this.debounce("update",this.getPrompt,2000)
+      this.debounce("update", this.getPrompt,2000)
     },
     getPrompt: function(){
       var line = this.line
