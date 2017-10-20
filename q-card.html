@@ -23,10 +23,11 @@
       },
     },
     __fireChips: function(line,chips){
+      var that = this
       chips.forEach(function(chip) {
         if (chip.toLowerCase().trim() == line.toLowerCase().trim()) (
-          this.fire("chip", {
-            prompt: this.prompt,
+          that.fire("chip", {
+            prompt: that.prompt,
             chip: chip,
           })
         )
