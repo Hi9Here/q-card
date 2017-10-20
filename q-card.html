@@ -40,9 +40,9 @@
       var line = this.line
       var card = this.card
       if (card) {
-        if(!card.name) {
+        if(!card.name || card.name.length > 3) {
           this.chips = []
-          this.prompt = "Name it"
+          this.prompt = "Name it (more)"
         } else if(!card.image) {
           this.chips = ["Yes","No"]
           this.prompt =  "Change Image?"
