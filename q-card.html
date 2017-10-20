@@ -24,6 +24,44 @@
       _fireChips: {
         computed:"__fireChips(line, chips, prompt)",
       },
+      tricks:{
+        value: {
+          image:{
+            intent: "^(add|with) image",
+            ask: "for url",
+            action: [
+              {insert: "\n"},
+              {insert: {image: `{{url}}`}},
+              {insert: "\n"},
+            ],
+          },
+          list:{
+            intent: "^(?:add|in a) list (.+)",
+            action: [
+              {insert: "\n"},
+              { 
+                attributes: {
+                  list: "bullet"
+                },
+                insert: "$1\n",
+              },
+            ],
+            split: "\\s?,\\s?",
+          },
+          heading: {
+            intent: "^(?:add|in a|as a) (?:heading|title) (.+)$",
+            action: [
+              {insert: "\n"},
+              { 
+                attributes: {
+                  header: 2
+                },
+                insert: "$1\n",
+              },
+            ],
+          },
+        }
+      }
     },
     __fireChips: function(line, chips, prompt){
       var that = this
@@ -51,10 +89,9 @@
             var cur = this.editor.getSelection().index+1
             this.editor.insertEmbed( cur, 'image', '/deko-150.png')
             this.editor.insertText(cur+1, "\n")
-            this.editor.setSelection(cur, 1)
+            this.editor.setSelection(cur+2)
             this.card.image = '/deko-150.png'
-            this.chips = ["Yes","No"]
-            this.prompt =  "Change Image?"
+            
           }
         } else if(!line) {
           this.chips = ["Heading","List","Image"]
