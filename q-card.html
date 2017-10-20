@@ -48,6 +48,7 @@
             var cur = this.editor.getSelection().index+1
             this.editor.insertEmbed( cur, 'image', '/deko-150.png');
             this.editor.setSelection(cur+1)
+            this.card.image = '/deko-150.png'
           }
           this.chips = ["Yes","No"]
           this.prompt =  "Change Image?"
@@ -55,8 +56,8 @@
           this.chips = ["Heading","List","Image"]
           this.prompt =  "Add some text"
         } else {
-        this.chips = ["Heading","List","Image"]
-        this.prompt =  ""
+          this.chips = ["Heading","List","Image"]
+          this.prompt =  ""
         }
       } else {
         this.chips = []
