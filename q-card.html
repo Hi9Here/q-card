@@ -40,14 +40,14 @@
       var line = this.line
       var card = this.card
       if (card) {
-        if(!card.name || card.name.length > 3) {
+        if(!card.name || card.name.length < 3) {
           this.chips = []
           this.prompt = "Name it (more)"
         } else if(!card.image) {
           if (this.editor) {
             var cur = this.editor.getSelection().index+1
             this.editor.insertEmbed( cur, 'image', '/deko-150.png');
-            this.editor.setSelection(cur)
+            this.editor.setSelection(cur+1)
           }
           this.chips = ["Yes","No"]
           this.prompt =  "Change Image?"
