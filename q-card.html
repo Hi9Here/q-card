@@ -39,7 +39,7 @@
     getPrompt: function(){
       var line = this.line
       var card = this.card
-      if (!card.name) {
+      if (card && !card.name) {
         this.chips = []
         this.prompt = "Name it"
       } else if(!card.image) {
