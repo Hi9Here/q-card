@@ -51,7 +51,7 @@
             var cur = this.editor.getSelection().index+1
             this.editor.insertEmbed( cur, 'image', '/deko-150.png')
             this.editor.insertText(cur+1, "\n")
-            this.editor.setSelection(cur+2)
+            this.editor.setSelection(cur, 1)
             this.card.image = '/deko-150.png'
             this.chips = ["Yes","No"]
             this.prompt =  "Change Image?"
