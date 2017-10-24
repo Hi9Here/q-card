@@ -29,7 +29,7 @@
           {
             chip: "add image",
             intent: "^(add|with) image",
-            ask: "for url",
+            prompt: "for url",
             action: [
               {insert: "\n"},
               {insert: {image: `{{url}}`}},
@@ -37,7 +37,8 @@
             ],
           },
           {
-            chip: "add list",
+            chip: "add list ",
+            prompt: "Start Your list",
             intent: "^(?:add|in a) list (.+)",
             action: [
               {insert: "\n"},
@@ -51,7 +52,7 @@
             split: "\\s?,\\s?",
           },
           {
-            chip: "add Heading",
+            chip: "add Heading ",
             intent: "^(?:add|in a|as a) (?:heading|title) (.+)$",
             action: [
               {insert: "\n"},
@@ -76,6 +77,9 @@
           })
         )
       })
+    },
+    chip: function(line){
+      console.log(line)
     },
     setPrompt: function(line, card) {
       this.chips = []
