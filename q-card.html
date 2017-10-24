@@ -92,7 +92,16 @@
       var card = this.card
       var chips = []
       for (var index = 0; index < this.cardTricks.length; ++index) {
-        chips.push(this.cardTricks[index].chip)
+        var chip = this.cardTricks[index].chip
+        if (chip == line) {
+          var prompt = this.cardTricks[index].prompt
+          if (prompt) {
+            this.chips = []
+            this.prompt = prompt
+          }
+          return 
+        }
+        chips.push(chip)
       }
       if (card) {
         if(!card.name || card.name.length < 3) {
