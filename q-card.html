@@ -116,10 +116,9 @@
           if (regex.test(line)) {
             var cur = this.editor.getSelection().index+1 
             // select Line
-            this.editor.updateContents([{retain:cur}, // Keep to cur
-              {insert:'trick'},
-              
-            ])
+            this.editor.updateContents([{retain:cur}] // Keep to cur
+              .concat(this.cardTricks[trick].action)
+            )
             // transform Line
             // update Line
           }
