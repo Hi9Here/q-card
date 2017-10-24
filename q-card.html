@@ -53,6 +53,7 @@
           },
           {
             chip: "add Heading ",
+            prompt: "Type the Heading",
             intent: "^(?:add|in a|as a) (?:heading|title) (.+)$",
             action: [
               {insert: "\n"},
@@ -90,6 +91,9 @@
       var line = this.line.replace(/\n/g ,"")
       var card = this.card
       var chips = []
+      for (var index = 0; index < this.cardTricks.length; ++index) {
+        chips.push(this.cardTricks[index].chip)
+      }
       if (card) {
         if(!card.name || card.name.length < 3) {
           this.prompt = "Name it (more)"
@@ -102,9 +106,6 @@
             this.card.image = '/deko-150.png'
           }
         } else if(!line) {
-          for (var index = 0; index < this.cardTricks.length; ++index) {
-            chips.push(this.cardTricks[index].chip)
-          }
           chips.push("Done")
           this.prompt = "Add some text"
         } else {
@@ -136,6 +137,7 @@
           }
         }
       }
+      
       this.chips = chips
     }},
     ready: function() {
