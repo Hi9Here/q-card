@@ -96,7 +96,6 @@
             this.editor.insertText(cur+1, "\n")
             this.editor.setSelection(cur+2)
             this.card.image = '/deko-150.png'
-            
           }
         } else if(!line) {
           for (var index = 0; index < this.cardTricks.length; ++index) {
@@ -105,7 +104,7 @@
           chips.push("Done")
           this.prompt = "Add some text"
         } else {
-          this.prompt =  ""
+          this.prompt = ""
         }
       } else {
         this.prompt = "Name it"
@@ -127,11 +126,9 @@
                 line.replace(new RegExp(this.cardTricks[trick].split, "gm"), "\\n").replace(regex, JSON.stringify(this.cardTricks[trick].action)).replace(/(\n|\t)/gm,"\\n")
               )
             }
-            this.editor.updateContents([{retain:cur}] // Keep to cur
+            this.editor.updateContents([{retain:cur},{delete:line.length}] // Keep to cur
               .concat(action)
             )
-            // transform Line
-            // update Line
           }
         }
       }
