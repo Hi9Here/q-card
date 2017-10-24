@@ -99,9 +99,13 @@
             
           }
         } else if(!line) {
+          for (var index = 0; index < this.cardTricks.length; ++index) {
+            chips.push(this.cardTricks[index].chip)
+          }
           chips.push("Done")
           this.prompt = "Add some text"
         } else {
+          
           this.prompt =  ""
         }
       } else {
