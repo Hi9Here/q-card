@@ -21,9 +21,6 @@
       _setPrompt: {
         computed:"setPrompt(line, card)",
       },
-      _fireChips: {
-        computed:"__fireChips(line, chips, prompt)",
-      },
       cardTricks:{
         value: [
           {
@@ -67,17 +64,6 @@
           },
         ]
       }
-    },
-    __fireChips: function(line, chips, prompt){
-      var that = this
-      chips.forEach(function(chip) {
-        if (chip.toLowerCase().trim() == line.toLowerCase().trim()) (
-          that.fire("chip", {
-            prompt: that.prompt,
-            chip: chip,
-          })
-        )
-      })
     },
     chip: function(line){
       console.log(line)
