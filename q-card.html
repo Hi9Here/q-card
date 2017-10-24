@@ -27,6 +27,7 @@
       tricks:{
         value: {
           image:{
+            chip: "add image",
             intent: "^(add|with) image",
             ask: "for url",
             action: [
@@ -36,6 +37,7 @@
             ],
           },
           list:{
+            chip: "add list",
             intent: "^(?:add|in a) list (.+)",
             action: [
               {insert: "\n"},
@@ -49,6 +51,7 @@
             split: "\\s?,\\s?",
           },
           heading: {
+            chip: "add Heading",
             intent: "^(?:add|in a|as a) (?:heading|title) (.+)$",
             action: [
               {insert: "\n"},
@@ -82,32 +85,34 @@
     getPrompt: function(){
       var line = this.line
       var card = this.card
+      var chips = []
       if (card) {
         if(!card.name || card.name.length < 3) {
-          this.chips = []
           this.prompt = "Name it (more)"
         } else if(!card.image) {
           if (this.editor) {
             var cur = this.editor.getSelection().index+1
-            this.editor.insertEmbed( cur, 'image', '/deko-150.png')
+            this.editor.insertEmbed(cur, 'image', '/deko-150.png')
             this.editor.insertText(cur+1, "\n")
             this.editor.setSelection(cur+2)
             this.card.image = '/deko-150.png'
             
           }
         } else if(!line) {
-          this.chips = ["add Heading"," add List","add Image", "done"]
+          chips.push("Done")
           this.prompt = "Add some text"
         } else {
-          this.chips = ["Heading","List","Image"]
           this.prompt =  ""
         }
       } else {
-        this.chips = []
         this.prompt = "Name it"
       }
-      // test for tricks
-      
+      if (line && this.tricks.length) {
+        for (var index = 0; index < this.tricks.length; ++index) {
+          chips.push(this.tricks[index].chip)
+        }
+      }
+      this.chips = chips
     },
     ready: function() {
       this.getPrompt()
