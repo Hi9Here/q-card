@@ -82,7 +82,7 @@
       this.prompt = ""
       this.debounce("update", this.getPrompt,2000)
     },
-    getPrompt: function(){
+    getPrompt: function(){ if (this.line !== undefined) {
       var line = this.line.replace(/\n/g ,"")
       var card = this.card
       var chips = []
@@ -114,7 +114,7 @@
 
       }
       this.chips = chips
-    },
+    }},
     ready: function() {
       this.getPrompt()
     },
