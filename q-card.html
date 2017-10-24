@@ -113,7 +113,8 @@
       if (line && this.cardTricks.length) {
         for (var trick = 0; trick < this.cardTricks.length; ++trick) {
           var regex = new RegExp(this.cardTricks[trick].intent, "i")
-          if ((var matchs = regex.exec(line)) !== null) {
+          var matchs
+          if ((matchs = regex.exec(line)) !== null) {
             var cur = this.editor.getSelection().index+1 
             var action = this.cardTricks[trick].action
             // select Line
