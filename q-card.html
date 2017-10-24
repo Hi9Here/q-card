@@ -113,9 +113,19 @@
       if (line && this.cardTricks.length) {
         for (var trick = 0; trick < this.cardTricks.length; ++trick) {
           var regex = new RegExp(this.cardTricks[trick].intent, "i")
-          if (regex.test(line)) {
+          if ((var matchs = regex.exec(line)) !== null) {
             var cur = this.editor.getSelection().index+1 
+            var action = this.cardTricks[trick].action
             // select Line
+            if (!this.cardTricks[trick].split) {
+              action = JSON.parse(
+                line.replace(regex, JSON.stringify(this.cardTricks[trick].action)).replace(/(\n|\t)/gm,"\\n")
+              )
+            } else {
+              action = JSON.parse(
+                line.replace(new RegExp(this.cardTricks[trick].split, "gm"), "\\n").replace(regex, JSON.stringify(this.cardTricks[trick].action)).replace(/(\n|\t)/gm,"\\n")
+              )
+            }
             this.editor.updateContents([{retain:cur}] // Keep to cur
               .concat(this.cardTricks[trick].action)
             )
