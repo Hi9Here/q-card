@@ -25,7 +25,7 @@
         computed:"__fireChips(line, chips, prompt)",
       },
       tricks:{
-        value: {
+        value: [
           image:{
             chip: "add image",
             intent: "^(add|with) image",
@@ -63,7 +63,7 @@
               },
             ],
           },
-        }
+        ]
       }
     },
     __fireChips: function(line, chips, prompt){
