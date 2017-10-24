@@ -83,7 +83,7 @@
       this.debounce("update", this.getPrompt,2000)
     },
     getPrompt: function(){
-      var line = this.line
+      var line = this.line.replace(/\n/g ,"")
       var card = this.card
       var chips = []
       if (card) {
@@ -105,16 +105,13 @@
           chips.push("Done")
           this.prompt = "Add some text"
         } else {
-          
           this.prompt =  ""
         }
       } else {
         this.prompt = "Name it"
       }
       if (line && this.cardTricks.length) {
-        for (var index = 0; index < this.cardTricks.length; ++index) {
-          chips.push(this.cardTricks[index].chip)
-        }
+
       }
       this.chips = chips
     },
