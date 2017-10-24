@@ -27,19 +27,19 @@
       cardTricks:{
         value: [
           {
-            chip: "add image",
-            intent: "^(add|with) image",
-            prompt: "for url",
+            chip: "add image ",
+            intent: "^(add|with) image (.+)",
+            prompt: "add for url ",
             action: [
               {insert: "\n"},
-              {insert: {image: `{{url}}`}},
+              {insert: {image: '$1'}},
               {insert: "\n"},
             ],
           },
           {
             chip: "add list ",
             prompt: "Start Your list",
-            intent: "^(?:add|in a) list (.+)",
+            intent: "^(?:add|in a) list (.+)*",
             action: [
               {insert: "\n"},
               { 
