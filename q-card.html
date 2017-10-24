@@ -126,7 +126,7 @@
                 line.replace(new RegExp(this.cardTricks[trick].split, "gm"), "\\n").replace(regex, JSON.stringify(this.cardTricks[trick].action)).replace(/(\n|\t)/gm,"\\n")
               )
             }
-            this.editor.updateContents([{retain:cur - line.length},{delete:line.length}] // Keep to cur
+            this.editor.updateContents([{retain:(cur - line.length)-1},{delete:line.length}] // Keep to cur
               .concat(action)
             )
           }
