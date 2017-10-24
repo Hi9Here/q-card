@@ -24,7 +24,7 @@
       _fireChips: {
         computed:"__fireChips(line, chips, prompt)",
       },
-      tricks:{
+      cardTricks:{
         value: [
           {
             chip: "add image",
@@ -107,7 +107,7 @@
       } else {
         this.prompt = "Name it"
       }
-      if (line && this.tricks.length) {
+      if (line && this.cardTricks.length) {
         for (var index = 0; index < this.tricks.length; ++index) {
           chips.push(this.tricks[index].chip)
         }
