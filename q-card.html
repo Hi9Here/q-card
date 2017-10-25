@@ -82,7 +82,7 @@
             this.prompt = prompt
           }
         } else if (chip.toLowerCase().startsWith(line)) {
-          chips.push(chip)
+          // chips.push(chip) chips for autocomplete if the lying can be replaced while you were typing
         }
       }
       this.debounce("update", this.getPrompt,2000)
