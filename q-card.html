@@ -71,6 +71,15 @@
     setPrompt: function(line, card) {
       this.chips = []
       this.prompt = ""
+      for (var index = 0; index < this.cardTricks.length; ++index) {
+        var chip = this.cardTricks[index].chip
+        if (chip == line) {
+          var prompt = this.cardTricks[index].prompt
+          if (prompt) {
+            this.prompt = prompt
+          }
+        }
+      }
       this.debounce("update", this.getPrompt,2000)
     },
     getPrompt: function(){ if (this.line !== undefined) {
