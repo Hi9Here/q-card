@@ -71,6 +71,9 @@
     setPrompt: function(line, card) {
       this.chips = []
       this.prompt = ""
+      if (this.editor && this.editor.getSelection() && this.editor.getSelection().index) {
+        line = this.editor.getLine(this.editor.getSelection().index)[0].domNode.outerText
+      }
       for (var index = 0; index < this.cardTricks.length; ++index) {
         var chip = this.cardTricks[index].chip
         if (chip == line) {
@@ -84,7 +87,7 @@
     },
     getPrompt: function(){
       var line = ""
-      if (this.editor.getSelection() && this.editor.getSelection().index) {
+      if (this.editor && this.editor.getSelection() && this.editor.getSelection().index) {
         line = this.editor.getLine(this.editor.getSelection().index)[0].domNode.outerText
       }
       var card = this.card
