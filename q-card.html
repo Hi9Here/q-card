@@ -81,6 +81,9 @@
           if (prompt) {
             this.prompt = prompt
           }
+        } else {
+        if (chip.toLowerCase().startsWith(line)) {
+          this.chips.push(chip)
         }
       }
       this.debounce("update", this.getPrompt,2000)
