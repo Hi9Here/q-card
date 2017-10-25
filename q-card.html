@@ -82,8 +82,11 @@
       }
       this.debounce("update", this.getPrompt,2000)
     },
-    getPrompt: function(){ if (this.line !== undefined) {
-      var line = this.line.replace(/\n/g ,"")
+    getPrompt: function(){
+      var line = ""
+      if (this.editor.getSelection() && this.editor.getSelection().index) {
+        line = this.editor.getLine(this.editor.getSelection().index)[0].domNode.outerText
+      }
       var card = this.card
       var chips = []
       for (var index = 0; index < this.cardTricks.length; ++index) {
@@ -143,7 +146,7 @@
       }
       
       this.chips = chips
-    }},
+    },
     ready: function() {
       this.getPrompt()
     },
