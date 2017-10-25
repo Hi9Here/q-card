@@ -81,8 +81,7 @@
           if (prompt) {
             this.prompt = prompt
           }
-        } else {
-        if (chip.toLowerCase().startsWith(line)) {
+        } else if (chip.toLowerCase().startsWith(line)) {
           this.chips.push(chip)
         }
       }
