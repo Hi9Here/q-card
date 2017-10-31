@@ -108,7 +108,7 @@
         chips.push(chip)
       }
       if (card) {
-        if(!card.name || card.name.length < 3) {
+        if(!card.title || card.title.length < 3) {
           this.prompt = "Name it (more)"
         } else if(!card.image) {
           if (this.editor && this.editor.getSelection() && this.editor.getSelection().index) {
