@@ -1,8 +1,18 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../file-upload/file-upload.html">
 <!--
   `<q-card></q-card>` d
   @demo demo.html
 -->
+
+<dom-module id="file-upload">
+  <template>
+    <template is="dom-if" if="[[]]">
+      <file-upload></file-upload>
+    </template>
+  </template>
+</dom-module>
+
 <script>
   Polymer({
     is: "q-card",
@@ -26,7 +36,7 @@
           {
             chip: "add image ",
             intent: "^(?:add|with) image (.+)",
-            prompt: "add for url ",
+            prompt: "add url",
             action: [
               {insert: "\n"},
               {insert: {image: '$1'}},
@@ -84,6 +94,11 @@
         } else if (chip.toLowerCase().startsWith(line)) {
           // chips.push(chip) chips for autocomplete if the lying can be replaced while you were typing
         }
+      }
+      if (this.cardTricks[index].prompt == "add url") {
+        this.addUrl = true
+      } else {
+        this.addUrl = false
       }
       this.debounce("update", this.getPrompt,2000)
       this.set("chips", chips)
