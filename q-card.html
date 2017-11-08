@@ -8,7 +8,10 @@
 <dom-module id="file-upload">
   <template>
     <template is="dom-if" if="[[addUrl]]">
-      <file-upload></file-upload>
+      <file-upload download-U-R-L="{{url}}"></file-upload>
+      <template is="dom-repeat" items="{{urls}}">
+        [[item]]
+      </template>
     </template>
   </template>
 </dom-module>
@@ -19,6 +22,10 @@
     properties:{
       card:{
         notify:true,
+      },
+      urls: {
+        Observer: "addToUrls"
+        type:Array,
       },
       chips:{
         notify:true,
@@ -74,6 +81,9 @@
           },
         ]
       }
+    },
+    addToUrls: function(url){
+      this.push("urls", url)
     },
     chip: function(line){
       console.log(line)
