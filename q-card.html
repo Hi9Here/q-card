@@ -8,7 +8,7 @@
 <dom-module id="file-upload">
   <template>
     <template is="dom-if" if="[[addUrl]]">
-      <file-upload download-U-R-L="{{url}}"></file-upload>
+      <file-upload url="{{url}}"></file-upload>
       <template is="dom-repeat" items="{{urls}}">
         [[item]]
       </template>
