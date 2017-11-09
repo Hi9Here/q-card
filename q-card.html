@@ -71,7 +71,7 @@
             intent: "^(?:add|in a|as a) (?:heading|title) (.+)$",
             action: [
               {insert: "\n"},
-              { 
+              {
                 attributes: {
                   header: 2
                 },
@@ -105,7 +105,7 @@
           // chips.push(chip) chips for autocomplete if the lying can be replaced while you were typing
         }
       }
-      if (this.cardTricks[index].prompt == "add url") {
+      if (this.prompt == "add url") {
         this.addUrl = true
       } else {
         this.addUrl = false
