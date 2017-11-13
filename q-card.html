@@ -10,7 +10,7 @@
   <template>
     <template is="dom-if" if="[[addUrl]]">
       <template is="dom-repeat" items="[[files]]">
-        <paper-chip title="[[item.url]]" on-tap="addurl" value="[[item.name]]">[[item.name]]</paper-chip>
+        <paper-chip title="[[item.url]]" on-tap="addurl" label="[[item.name]]" value="[[item.url]]" >[[item.name]]</paper-chip>
       </template>
       <file-upload files="{{files}}"></file-upload>
     </template>
