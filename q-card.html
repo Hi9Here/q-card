@@ -8,10 +8,10 @@
 <dom-module id="q-card">
   <template>
     <template is="dom-if" if="[[addUrl]]">
-      <template is="dom-repeat" items="[[urls]]">
+      <template is="dom-repeat" items="[[files]]">
         <span title="[[item.url]]">[[item.name]]</span>
       </template>
-      <file-upload url="{{url}}"></file-upload>
+      <file-upload files="{{files}}"></file-upload>
     </template>
   </template>
 </dom-module>
