@@ -11,8 +11,8 @@
     <template is="dom-if" if="[[addUrl]]">
       <template is="dom-repeat" items="[[files]]">
         <paper-chip title="[[item.url]]" on-tap="addurl" title="[[item.url]]" >
-          <div slot="icon"> [[index]] </div>
-          <div slot="label"  class="label"> [[item.name]] </div>
+          <div slot="icon" title="[[item.url]]"> [[index]] </div>
+          <div slot="label" title="[[item.url]]" class="label"> [[item.name]] </div>
         </paper-chip>
       </template>
       <file-upload files="{{files}}"></file-upload>
