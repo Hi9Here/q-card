@@ -9,7 +9,7 @@
   <template>
     <template is="dom-if" if="[[addUrl]]">
       <template is="dom-repeat" items="[[files]]">
-        <span title="[[item.url]]">[[item.name]]</span>
+        <span title="[[item.url]]" on-tap="addUrl">[[item.name]]</span>
       </template>
       <file-upload files="{{files}}"></file-upload>
     </template>
@@ -22,14 +22,6 @@
     properties:{
       card:{
         notify:true,
-      },
-      url: {
-        observer: "addToUrls",
-        type:Array,
-      },
-      urls: {
-        type:Array,
-        value: [],
       },
       chips:{
         notify:true,
@@ -85,9 +77,6 @@
           },
         ]
       }
-    },
-    addToUrls: function(url){
-      this.push("urls", {url: url, name: url.split('/').pop().split('#')[0].split('?')[0]})
     },
     chip: function(line){
       console.log(line)
@@ -185,6 +174,9 @@
     },
     ready: function() {
       this.getPrompt()
+    },
+    addUrl: function(e) {
+      this.editor.insertText(this.editor.getSelection().index, e.target.title)
     },
   })
 </script>
