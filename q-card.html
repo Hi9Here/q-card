@@ -12,7 +12,7 @@
       <template is="dom-repeat" items="[[files]]">
         <paper-chip title="[[item.url]]" on-tap="addurl" value="[[item.url]]" >
           <div slot="icon"> [[index]] </div>
-          <div slot="label"> [[item.name]] </div>
+          <div slot="label"  class="label"> [[item.name]] </div>
         </paper-chip>
       </template>
       <file-upload files="{{files}}"></file-upload>
