@@ -9,7 +9,7 @@
   <template>
     <template is="dom-if" if="[[addUrl]]">
       <template is="dom-repeat" items="[[files]]">
-        <span title="[[item.url]]" on-tap="addUrl">[[item.name]]</span>
+        <paper-chip title="[[item.url]]" on-tap="addurl">[[item.name]]</paper-chip>
       </template>
       <file-upload files="{{files}}"></file-upload>
     </template>
@@ -175,7 +175,7 @@
     ready: function() {
       this.getPrompt()
     },
-    addUrl: function(e) {
+    addurl: function(e) {
       this.editor.insertText(this.editor.getSelection().index, e.target.title)
     },
   })
