@@ -8,10 +8,10 @@
 <dom-module id="q-card">
   <template>
     <template is="dom-if" if="[[addUrl]]">
-      <file-upload url="{{url}}"></file-upload>
       <template is="dom-repeat" items="[[urls]]">
-        <div>[[item]]</div>
+        <span title="[[item.url]]">[[item.name]]</span>
       </template>
+      <file-upload url="{{url}}"></file-upload>
     </template>
   </template>
 </dom-module>
@@ -87,7 +87,7 @@
       }
     },
     addToUrls: function(url){
-      this.push("urls", url)
+      this.push("urls", {url: url, name: url.split('/').pop().split('#')[0].split('?')[0]})
     },
     chip: function(line){
       console.log(line)
