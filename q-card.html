@@ -111,7 +111,9 @@
         this.addUrl = false
       }
       this.debounce("update", this.getPrompt,2000)
-      this.set("chips", chips)
+      if (!part) {
+        this.set("chips", chips)
+      }
     },
     getPrompt: function(){
       var line = ""
@@ -176,8 +178,11 @@
           }
         }
       }
-      
-      this.chips = chips
+      if (this.part) {
+        this.chips = []
+      } else {
+        this.chips = chips
+      }
     },
     ready: function() {
       this.getPrompt()
