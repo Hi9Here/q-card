@@ -31,12 +31,15 @@
         notify:true,
         type:Array,
       },
+      part: {
+        value: 0
+      },
       prompt:{
         type:String,
         notify:true,
       },
       _setPrompt: {
-        computed:"setPrompt(line, card)",
+        computed:"setPrompt(line, card, part)",
       },
       cardTricks:{
         value: [
@@ -85,7 +88,7 @@
     chip: function(line){
       console.log(line)
     },
-    setPrompt: function(line, card) {
+    setPrompt: function(line, card, part) {
       var chips = []
       this.prompt = ""
       if (this.editor && this.editor.getSelection() && this.editor.getSelection().index) {
