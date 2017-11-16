@@ -15,7 +15,7 @@
           <div slot="label" title="[[item.url]]" class="label"> [[item.name]] </div>
         </paper-chip>
       </template>
-      <file-upload files="{{files}}"></file-upload>
+      <file-upload files="{{files}}" accept="[[accept]]"></file-upload>
     </template>
   </template>
 </dom-module>
@@ -47,6 +47,7 @@
             chip: "add image ",
             intent: "^(?:add|with) image (.+)",
             prompt: "add url",
+            accept: "image/*",
             action: [
               {insert: "\n"},
               {insert: {image: '$1'}},
@@ -100,16 +101,23 @@
           var prompt = this.cardTricks[index].prompt
           if (prompt) {
             this.prompt = prompt
+            if (this.prompt == "add url") {
+              this.addUrl = true
+              if (chip.accept) {
+                this.accept = chip.accept
+              } else {
+                this.accept = "*"
+              }
+            } else {
+              this.addUrl = false
+            }
           }
+          
         } else if (chip.toLowerCase().startsWith(line)) {
           // chips.push(chip) chips for autocomplete if the lying can be replaced while you were typing
         }
       }
-      if (this.prompt == "add url") {
-        this.addUrl = true
-      } else {
-        this.addUrl = false
-      }
+      
       this.debounce("update", this.getPrompt,2000)
       if (!part) {
         this.set("chips", chips)
