@@ -105,12 +105,11 @@
               this.addUrl = true
               if (chip.accept) {
                 this.accept = chip.accept
-              } else {
-                this.accept = "*"
               }
-            } else {
-              this.addUrl = false
-            }
+            } 
+          } else {
+            this.accept = "*"
+            this.addUrl = false
           }
           
         } else if (chip.toLowerCase().startsWith(line)) {
