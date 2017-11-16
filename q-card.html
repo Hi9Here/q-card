@@ -137,14 +137,6 @@
       if (card) {
         if(!card.title || card.title.length < 3) {
           this.prompt = "Name it (more)"
-        } else if(!card.image) {
-          if (this.editor && this.editor.getSelection() && this.editor.getSelection().index) {
-            var cur = this.editor.getSelection().index+1
-            this.editor.insertEmbed(cur, 'image', '/deko-150.png')
-            this.editor.insertText(cur+1, "\n")
-            this.editor.setSelection(cur+2)
-            this.card.image = '/deko-150.png'
-          }
         } else if(!line) {
           chips.push("Done")
           this.prompt = "Add some text"
