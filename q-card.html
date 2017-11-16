@@ -114,6 +114,9 @@
           
         } else if (chip.toLowerCase().startsWith(line)) {
           // chips.push(chip) chips for autocomplete if the lying can be replaced while you were typing
+        } else {
+          this.accept = "*"
+          this.addUrl = false
         }
       }
       
