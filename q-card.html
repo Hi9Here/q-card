@@ -101,25 +101,20 @@
           var prompt = this.cardTricks[index].prompt
           if (prompt) {
             this.prompt = prompt
-            if (this.prompt == "add url") {
-              this.addUrl = true
-              if (chip.accept) {
-                this.accept = chip.accept
-              }
-            } 
-          } else {
-            this.accept = "*"
-            this.addUrl = false
           }
-          
         } else if (chip.toLowerCase().startsWith(line)) {
           // chips.push(chip) chips for autocomplete if the lying can be replaced while you were typing
-        } else {
-          this.accept = "*"
-          this.addUrl = false
         }
       }
-      
+      if (this.prompt == "add url") {
+        this.addUrl = true
+        if (chip.accept) {
+          this.accept = chip.accept
+        }
+      } else {
+        this.accept = "*"
+        this.addUrl = false
+      } 
       this.debounce("update", this.getPrompt,2000)
       if (!part) {
         this.set("chips", chips)
