@@ -90,7 +90,7 @@
       console.log(line)
     },
     setPrompt: function(line, card, part) {
-      if (this.editor && this.editor.getContents() && this.editor.getContents().length < 3) {
+      if (part || this.editor && this.editor.getContents() && this.editor.getContents().length < 3) {
         this.chips = []
         this.prompt = ""
         return
@@ -126,7 +126,7 @@
       }
     },
     getPrompt: function(){
-      if (this.editor && this.editor.getContents() && this.editor.getContents().length < 3) {
+      if (this.part || this.editor && this.editor.getContents() && this.editor.getContents().length < 3) {
         this.chips = []
         this.prompt = ""
         return
