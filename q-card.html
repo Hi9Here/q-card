@@ -90,6 +90,11 @@
       console.log(line)
     },
     setPrompt: function(line, card, part) {
+      if (this.editor.getContents().length < 3) {
+        this.chips = []
+        this.prompt = ""
+        return
+      }
       var chips = []
       this.prompt = ""
       if (this.editor && this.editor.getSelection() && this.editor.getSelection().index) {
