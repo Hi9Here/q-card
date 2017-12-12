@@ -121,6 +121,11 @@
       }
     },
     getPrompt: function(){
+      if (this.editor.getContents().length < 3) {
+        this.chips = []
+        this.prompt = ""
+        return
+      }
       var line = ""
       if (this.editor && this.editor.getSelection() && this.editor.getSelection().index) {
         line = this.editor.getLine(this.editor.getSelection().index)[0].domNode.outerText
