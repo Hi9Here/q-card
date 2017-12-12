@@ -90,7 +90,7 @@
       console.log(line)
     },
     setPrompt: function(line, card, part) {
-      if (this.editor.getContents().length < 3) {
+      if (this.editor && this.editor.getContents() && this.editor.getContents().length < 3) {
         this.chips = []
         this.prompt = ""
         return
@@ -126,11 +126,11 @@
       }
     },
     getPrompt: function(){
-      if (this.editor.getContents().length < 3) {
+      if (this.editor && this.editor.getContents() && this.editor.getContents().length < 3) {
         this.chips = []
         this.prompt = ""
         return
-      }
+      } // TODO DRY
       var line = ""
       if (this.editor && this.editor.getSelection() && this.editor.getSelection().index) {
         line = this.editor.getLine(this.editor.getSelection().index)[0].domNode.outerText
