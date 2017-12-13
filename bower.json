@@ -8,7 +8,7 @@
     "web-components"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#~1.9.3",
+    "polymer": "Polymer/polymer#~1.11.1",
     "file-upload": "marcus7777/file-upload"
   },
   "devDependencies": {
