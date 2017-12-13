@@ -45,7 +45,7 @@
         value: [
           {
             chip: "add image ",
-            intent: "^(?:add|with) image (.+)",
+            intent: "^(?:add|with) image ((?:https?|data):(?:\/\/)?.*(?:\.|\/){1}(?:png|jpeg|jpg|gif).*)",
             prompt: "add url",
             accept: "image/*",
             action: [
