@@ -15,7 +15,7 @@
           <div slot="label" title="[[item.url]]" class="label"> [[item.name]] </div>
         </paper-chip>
       </template>
-      <file-upload files="{{files}}" accept="[[accept]]"></file-upload>
+      <file-upload files="{{files}}" meta="[[meta]]" accept="[[accept]]"></file-upload>
     </template>
   </template>
 </dom-module>
@@ -25,18 +25,22 @@
     is: "q-card",
     properties:{
       card:{
-        notify:true,
+        notify: true,
       },
       chips:{
-        notify:true,
-        type:Array,
+        notify: true,
+        type: Array,
+      },
+      meta: {
+        value: {},
+        type: Object,
       },
       part: {
         value: 0
       },
       prompt:{
-        type:String,
-        notify:true,
+        type: String,
+        notify: true,
       },
       _setPrompt: {
         computed:"setPrompt(line, card, part)",
