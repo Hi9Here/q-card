@@ -123,7 +123,7 @@
             this.accept = "*"
             this.addUrl = false
           } 
-        } else if (chip.toLowerCase().startsWith(line)) {
+        } else if (chip.toLowerCase().startsWith(line) && line) {
           chips.push(chip) // chips for autocomplete if the lying can be replaced while you were typing
         }
       }
