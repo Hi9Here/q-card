@@ -8,19 +8,17 @@
 
 <dom-module id="q-card">
   <template>
-    <template is="dom-if" if="[[addUrl]]">
-      <template is="dom-repeat" items="[[files]]">
-        <paper-chip title="[[item.url]]" on-tap="addurl" title="[[item.url]]" >
-          <template is="dom-if" if="[[item.image]]">
-            <div slot="icon" title="[[item.url]]"> 
-              <img src="[[item.image]]" style="width:32px;" />
-            </div>
-          </template>
-          <div slot="label" title="[[item.url]]" class="label"> [[item.name]] </div>
-        </paper-chip>
-      </template>
-      <file-upload files="{{files}}" meta="[[meta]]" accept="[[accept]]"></file-upload>
+    <template is="dom-repeat" items="[[files]]">
+      <paper-chip title="[[item.url]]" on-tap="addurl" title="[[item.url]]" >
+        <template is="dom-if" if="[[item.image]]">
+          <div slot="icon" title="[[item.url]]"> 
+            <img src="[[item.image]]" style="width:32px;" />
+          </div>
+        </template>
+        <div slot="label" title="[[item.url]]" class="label"> [[item.name]] </div>
+      </paper-chip>
     </template>
+    <file-upload files="{{files}}" meta="[[meta]]" accept="[[accept]]"></file-upload>
   </template>
 </dom-module>
 
