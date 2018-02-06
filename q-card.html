@@ -9,7 +9,7 @@
 <dom-module id="q-card">
   <template>
     <template is="dom-repeat" items="[[files]]">
-      <paper-chip title="[[item.url]]" on-tap="addurl" title="[[item.url]]" >
+      <paper-chip style="max-width: 32%" title="[[item.url]]" on-tap="addurl" title="[[item.url]]" >
         <template is="dom-if" if="[[item.image]]">
           <div slot="icon" class="icon" title="[[item.url]]"> 
             <img src="[[item.image]]" style="width:32px;" />
