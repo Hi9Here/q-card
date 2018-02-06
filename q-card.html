@@ -11,7 +11,11 @@
     <template is="dom-if" if="[[addUrl]]">
       <template is="dom-repeat" items="[[files]]">
         <paper-chip title="[[item.url]]" on-tap="addurl" title="[[item.url]]" >
-          <div slot="icon" title="[[item.url]]"> [[index]] </div>
+          <template is="dom-if" if="[[item.image]]">
+            <div slot="icon" title="[[item.url]]"> 
+              <img src="[[item.image]]" style="width:32px;" />
+            </div>
+          </template>
           <div slot="label" title="[[item.url]]" class="label"> [[item.name]] </div>
         </paper-chip>
       </template>
@@ -30,6 +34,7 @@
       chips:{
         notify: true,
         type: Array,
+        value: [],
       },
       meta: {
         value: {},
@@ -102,7 +107,7 @@
         this.prompt = ""
         return
       }
-      var chips = []
+      var chips = this.chips || []
       this.prompt = ""
       if (this.editor && this.editor.getSelection() && this.editor.getSelection().index) {
         line = this.editor.getLine(this.editor.getSelection().index)[0].domNode.outerText
@@ -144,7 +149,7 @@
         line = this.editor.getLine(this.editor.getSelection().index)[0].domNode.outerText
       }
       var card = this.card
-      var chips = []
+      var chips = this.chips || []
       for (var index = 0; index < this.cardTricks.length; ++index) {
         var chip = this.cardTricks[index].chip
         if (chip == line) {
