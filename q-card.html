@@ -208,7 +208,12 @@
     },
     addurl: function(e) {
       this.editor.focus()
-      if (e.target.title) { 
+      if (e.target.title) {
+        console.log(this.editor.savedRange)
+        var cur = this.editor.getSelection().index
+        var line = this.editor.getLine(cur)[0].domNode.outerText.replace("\n","").trim()
+        this.editor.deleteText(cur - line.length, line.length)
+        
         this.editor.insertEmbed(this.editor.getSelection().index, 'image', e.target.title)
       }
     },
