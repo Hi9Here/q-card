@@ -12,7 +12,7 @@
       <paper-chip style="max-width: 32%" title="[[item.url]]" on-tap="addurl" title="[[item.url]]" >
         <template is="dom-if" if="[[item.image]]">
           <div slot="icon" class="icon" title="[[item.url]]"> 
-            <img src="[[item.image]]" style="width:32px;" />
+            <img src="[[item.image]]" style="min-width:32px;height:32px" />
           </div>
         </template>
         <div slot="label" title="[[item.url]]" class="label"> [[item.name]] </div>
