@@ -208,7 +208,9 @@
     },
     addurl: function(e) {
       this.editor.focus()
-      this.editor.insertText(this.editor.getSelection().index, e.target.title)
+      if (e.target.title) { 
+        this.editor.insertEmbed(this.editor.getSelection().index, 'image', e.target.title)
+      }
     },
   })
 </script>
