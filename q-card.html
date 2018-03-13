@@ -181,25 +181,35 @@
           return {
             text: chip,
             onTap: function() {
-              var cur = that.editor.getSelection().index + 1 
+              var ops = that.editor.getContents().ops
               var action = chips[chip].action
-              if (action) {
-                var regex = new RegExp(chips[chip].intent, "i")
-                // select Line
-                if (!chips[chip].split) {
-                  action = JSON.parse(
-                    line.replace(regex, JSON.stringify(action)).replace(/(\n|\t)/gm,"\\n")
+              if (that.editor.getSelection() !== null) {
+                var cur = that.editor.getSelection().index + 1
+                if (action) {
+                  var regex = new RegExp(chips[chip].intent, "i")
+                  // select Line
+                  if (!chips[chip].split) {
+                    action = JSON.parse(
+                      line.replace(regex, JSON.stringify(action)).replace(/(\n|\t)/gm,"\\n")
+                    )
+                  } else {
+                    action = JSON.parse(
+                      line.replace(new RegExp(chips[chip].split, "gm"), "\\n").replace(regex, JSON.stringify(action)).replace(/(\n|\t)/gm,"\\n")
+                    )
+                  }
+                  that.editor.updateContents([{retain:(cur - (line.length+1))},{delete:line.length+1}] // Keep to cur
+                    .concat(action)
                   )
+                
                 } else {
-                  action = JSON.parse(
-                    line.replace(new RegExp(chips[chip].split, "gm"), "\\n").replace(regex, JSON.stringify(action)).replace(/(\n|\t)/gm,"\\n")
-                  )
+                  that.editor.insertText(cur, chip)
                 }
-                that.editor.updateContents([{retain:(cur - (line.length+1))},{delete:line.length+1}] // Keep to cur
-                  .concat(action)
-                )
               } else {
-                that.editor.insertText(cur, chip)
+                if (action) {
+                  that.editor.setContents(ops.concat(action))
+                } else {
+                  that.editor.setContents(ops.concat([{insert: chip + "\n"}])
+                }
               }
               console.log("chip", chips[chip])
             },
