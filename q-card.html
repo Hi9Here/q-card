@@ -177,7 +177,7 @@
           var regex = new RegExp(this.cardTricks[trick].intent, "i")
           var matchs
           if ((matchs = regex.exec(line)) !== null) {
-            var cur = this.editor.getSelection().index+1 
+            var cur = this.editor.getSelection().index + 1 
             var action = this.cardTricks[trick].action
             if (action) {
               // select Line
@@ -200,7 +200,15 @@
       if (this.part) {
         this.chips = []
       } else {
-        this.chips = Object.keys(chips)
+        var that = this
+        this.chips = Object.keys(chips).map(function(chip) {
+          return {
+            text: chip,
+            onTap: function() {
+              console.log("chip", chip)
+            },
+          }
+        })
       }
     },
     ready: function() {
