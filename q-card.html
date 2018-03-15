@@ -178,7 +178,7 @@
       } else {
         var that = this
         this.chips = Object.keys(chips).filter(function(chip) {
-          if (chip.intent) {
+          if (chips[chip].intent) {
             console.log(that.line)
           } else {
             return true
