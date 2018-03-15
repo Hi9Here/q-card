@@ -52,10 +52,10 @@
         value: [
           {
             chip: "add signature ",
-          },
-          {
+          },{
             chip: "add image ",
           },{
+            chip: "add image ",
             intent: "^(?:add|with) image ((?:https?|data):(?:\/\/)?.*(?:\.|\/){1}(?:png|jpeg|jpg|gif).*)",
             prompt: "add url",
             accept: "image/*",
@@ -64,10 +64,10 @@
               {insert: {image: '$1'}},
               {insert: "\n"},
             ],
-          },
-          {
+          },{
             chip: "add list ",
           },{
+            chip: "add list ",
             prompt: "Start Your list",
             intent: "^(?:add|in a) list (.+)*",
             action: [
@@ -80,10 +80,10 @@
               },
             ],
             split: "\\s?,\\s?",
-          },
-          {
+          },{
             chip: "add Heading ",
           },{
+            chip: "add Heading ",
             prompt: "Type the Heading",
             intent: "^(?:add|in a|as a) heading (.+)$",
             action: [
