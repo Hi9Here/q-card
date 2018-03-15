@@ -214,8 +214,9 @@
             },
           }
         }).concat(that.files.map(function(file) {
+          console.log(file)
           var toReturn = {
-            text: chip,
+            text: file,
             onTap: function() {
               that.editor.focus()
               var cur = that.editor.getSelection().index
