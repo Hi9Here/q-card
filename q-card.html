@@ -177,7 +177,13 @@
         this.chips = []
       } else {
         var that = this
-        this.chips = Object.keys(chips).map(function(chip) {
+        this.chips = Object.keys(chips).filter(function(chip) {
+          if (chip.intent) {
+            console.log(that.line)
+          } else {
+            return true
+          }
+        }).map(function(chip) {
           return {
             text: chip,
             onTap: function() {
