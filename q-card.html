@@ -51,10 +51,11 @@
       cardTricks:{
         value: [
           {
-            chip: "add signature",
+            chip: "add signature ",
           },
           {
             chip: "add image ",
+          },{
             intent: "^(?:add|with) image ((?:https?|data):(?:\/\/)?.*(?:\.|\/){1}(?:png|jpeg|jpg|gif).*)",
             prompt: "add url",
             accept: "image/*",
@@ -66,6 +67,7 @@
           },
           {
             chip: "add list ",
+          },{
             prompt: "Start Your list",
             intent: "^(?:add|in a) list (.+)*",
             action: [
@@ -81,6 +83,7 @@
           },
           {
             chip: "add Heading ",
+          },{
             prompt: "Type the Heading",
             intent: "^(?:add|in a|as a) heading (.+)$",
             action: [
@@ -179,16 +182,10 @@
         var that = this
         this.chips = Object.keys(chips).filter(function(chip) {
           if (chips[chip].intent) {
-            console.log(that.line)
-          } else {
-            return true
-          }
-        }).map(function(chip) {
-          return {
-            text: chip,
-            onTap: function() {
-              var ops = that.editor.getContents().ops
+            var regex = new RegExp(chips[chip].intent, 'gmi')
+            if (regex.test(that.line)) {
               var action = chips[chip].action
+              var ops = that.editor.getContents().ops
               if (that.editor.getSelection() !== null) {
                 var cur = that.editor.getSelection().index + 1
                 if (action) {
@@ -214,10 +211,21 @@
               } else {
                 if (action) {
                   that.editor.setContents(ops.concat(action))
-                } else {
-                  that.editor.setContents(ops.concat([{insert: chip + "\n"}]))
                 }
               }
+            }
+          } else {
+            return true
+          }
+        }).map(function(chip) {
+          return {
+            text: chip,
+            onTap: function() {
+              var ops = that.editor.getContents().ops
+              var action = chips[chip].action
+              // TODO needs thinking about 
+              that.editor.setContents(ops.concat([{insert: chip + "\n"}]))
+              
               console.log("chip", chips[chip])
             },
           }
