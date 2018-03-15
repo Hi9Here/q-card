@@ -110,9 +110,7 @@
       }
       var chips = {}
       this.prompt = ""
-      if (this.editor && this.editor.getSelection() && this.editor.getSelection().index) {
-        line = this.editor.getLine(this.editor.getSelection().index)[0].domNode.outerText
-      }
+      
       for (var index = 0; index < this.cardTricks.length; ++index) {
         var chip = this.cardTricks[index].chip
         if (chip == line) {
@@ -145,11 +143,9 @@
         this.prompt = ""
         return
       } // TODO DRY
-      var line = ""
-      if (this.editor && this.editor.getSelection() && this.editor.getSelection().index) {
-        line = this.editor.getLine(this.editor.getSelection().index)[0].domNode.outerText
-      }
+      var line = this.line
       var card = this.card
+      
       var chips = {}
       for (var index = 0; index < this.cardTricks.length; ++index) {
         var chip = this.cardTricks[index].chip
