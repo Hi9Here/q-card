@@ -7,7 +7,7 @@
 
 <dom-module id="q-card">
   <template>
-    <file-upload files="{{files}}" meta="[[meta]]" accept="[[accept]]"></file-upload>
+    <file-upload id="upload" files="{{files}}" meta="[[meta]]" accept="[[accept]]"></file-upload>
   </template>
 </dom-module>
 
@@ -234,7 +234,8 @@
           }
           return toReturn
         })).concat([{
-          text:"upload"
+          text: "upload",
+          labelFor: "upload",
         }])
       }
     },
