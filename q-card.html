@@ -233,7 +233,9 @@
             toReturn.image = file.image
           }
           return toReturn
-        })).concat(["upload"])
+        })).concat([{
+          text:"upload"
+        }])
       }
     },
     ready: function() {
