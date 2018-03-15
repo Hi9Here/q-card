@@ -1,6 +1,5 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../file-upload/file-upload.html">
-<link rel="import" href="../paper-chip/paper-chip.html">
 <!--
   `<q-card></q-card>` d
   @demo demo.html
@@ -8,16 +7,6 @@
 
 <dom-module id="q-card">
   <template>
-    <template is="dom-repeat" items="{{files}}">
-      <paper-chip style="max-width: 32%" title="[[item.url]]" on-tap="addurl" title="[[item.url]]" >
-        <template is="dom-if" if="[[item.image]]">
-          <div slot="icon" class="icon" title="[[item.url]]"> 
-            <img src="[[item.image]]" style="min-width:32px;height:32px" />
-          </div>
-        </template>
-        <div slot="label" title="[[item.url]]" class="label"> [[item.name]] </div>
-      </paper-chip>
-    </template>
     <file-upload files="{{files}}" meta="[[meta]]" accept="[[accept]]"></file-upload>
   </template>
 </dom-module>
@@ -102,7 +91,7 @@
     chip: function(line){
       console.log(line)
     },
-    setPrompt: function(line, card, part) {
+    setPrompt: function(line, card, part, files) {
       if (part || this.editor && this.editor.getContents() && this.editor.getContents().length < 3) {
         this.chips = []
         this.prompt = ""
@@ -221,26 +210,33 @@
               var action = chips[chip].action
               // TODO needs thinking about 
               that.editor.setContents(ops.concat([{insert: chip + "\n"}]))
-              
-              console.log("chip", chips[chip])
+              that.editor.focus()
             },
           }
-        })
+        }).concat(this.files.map(function(file) {
+          var toReturn = {
+            text: chip,
+            onTap: function() {
+              that.editor.focus()
+              var cur = that.editor.getSelection().index
+              var line = that.editor.getLine(cur)[0].domNode.outerText.replace("\n","").trim()
+              that.editor.deleteText(cur - line.length, line.length)
+              if (file.image) {
+                that.editor.insertEmbed(that.editor.getSelection().index, 'image', file.image)
+              } else {
+                //TODO
+              }
+            },
+          }
+          if (file.image) {
+            toReturn.image = file.image
+          }
+          return toReturn
+        })).concat(["upload"])
       }
     },
     ready: function() {
       this.getPrompt()
-    },
-    addurl: function(e) {
-      this.editor.focus()
-      if (e.target.title) {
-        console.log(this.editor.savedRange)
-        var cur = this.editor.getSelection().index
-        var line = this.editor.getLine(cur)[0].domNode.outerText.replace("\n","").trim()
-        this.editor.deleteText(cur - line.length, line.length)
-        
-        this.editor.insertEmbed(this.editor.getSelection().index, 'image', e.target.title)
-      }
     },
   })
 </script>
