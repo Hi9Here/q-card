@@ -216,7 +216,7 @@
         }).concat(that.files.map(function(file) {
           console.log(file)
           var toReturn = {
-            text: file,
+            text: file.name,
             onTap: function() {
               that.editor.focus()
               var cur = that.editor.getSelection().index
