@@ -198,9 +198,10 @@
                     )
                   }
                   that.editor.updateContents([{retain:(cur - (line.length+1))},{delete:line.length+1}] // Keep to cur
-                    .concat(action)
+                     .concat(action)
                   )
-                
+                  that.editor.setSelection(that.quill.getLength(), 0)
+                  that.editor.focus()
                 } else {
                   that.editor.insertText(cur, chip)
                 }
