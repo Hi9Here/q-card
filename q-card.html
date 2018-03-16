@@ -7,6 +7,13 @@
 
 <dom-module id="q-card">
   <template>
+    <style>
+      :host {
+        overflow: hidden;
+        height: 0px;
+        display: block;
+      }
+    </style>
     <file-upload id="upload" files="{{files}}" meta="[[meta]]" accept="[[accept]]"></file-upload>
   </template>
 </dom-module>
